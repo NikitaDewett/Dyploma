@@ -8,7 +8,8 @@ import { StartPage } from '../pages/start/start';
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { UserService } from '../services/userService';
+import { HashPipe } from '../services/hashPipe';
 @NgModule({
   declarations: [
     MyApp,
@@ -16,7 +17,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     FavoritesPage,
-    StartPage
+    StartPage,
+    HashPipe
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -32,7 +34,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   providers: [
     StatusBar,
+    UserService,
     SplashScreen,
+    HashPipe,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
