@@ -20,6 +20,9 @@ export class HomePage {
     //     redirectUri: 'http://localhost',  // Let is be localhost for Mobile Apps
     //     responseType: 'token',   // Use token only 
     //     appScope: ['basic','public_content'] 
+    
+     //token generator
+    //http://services.chrisriversdesign.com/instagram-token/
 
         /*
         appScope options are 
@@ -35,28 +38,36 @@ export class HomePage {
     // });
 
   private apiResponse;
-  public token
+  public token;
+  public next_url;
 
   constructor(public navCtrl: NavController, public UserService:UserService, public http: Http) {
-    this.token = '503991026.92c2071.3ba2f63091584759969b0bb1ea2a80ad'
-
+    this.token = '503991026.e029fea.2ce941ad07d446ffb17acd7960372aba'
   }
 
   ngOnInit(){
          this.UserService.getInstagramUserInfo(this.token).then((data)=>{
           this.apiResponse = data.data;
+          this.next_url = data.pagination.next_url;
           console.log('data is')
           console.log(data)
         })
   }
                  
   doRefresh(refresher) {
-    console.log('Begin async operation', refresher);
+          console.log('refreshing data')
+          this.UserService.getInstagramUserInfo(this.token).then((data)=>{
+          this.apiResponse = data.data;
+          console.log('refreshing complete')
+          refresher.complete();          
+        })
+  }
 
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
+  doInfinite(infiniteScroll){
+    setTimeout(()=>{
+      console.log(this.next_url)
+      infiniteScroll.complete()
+    },1000)
   }
 
   }
