@@ -10,15 +10,15 @@ export class UserService {
   }    
 
 
-  getInstagramUserInfo(token) {
-    //GET USER PHOTOS
+ loadFeed(token) {
+    //GET PHOTOS
     return this.http.get('https://api.instagram.com/v1/users/self/media/recent?access_token=' + token + '&count=5')
     .map((res:Response) => { console.log(res); return res.json()}).toPromise();
   }
 
-  loadMorePhotos(next_url, token){
-    //LOAD MORE PHOTOS, CUZ MAX COUNT FROM FIRST LOAD IS 5 (WE USING PROPERTY NEXT_URL, TO GET NEXT 5 PHOTOS)
-    return this.http.get(next_url + token + '&count=5')
+  loadMorePhotos(next_url){
+    //LOAD MORE PHOTOS, CUZ MAX COUNT FROM FIRST LOAD IS 5 (WE'RE USING PROPERTY NEXT_URL, TO GET NEXT 5 PHOTOS)
+    return this.http.get(next_url)
     .map((res:Response)=> {return res.json()}).toPromise();
 
   }  
