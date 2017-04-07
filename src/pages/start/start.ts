@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
+import { PlaceInitPage } from '../place-init/place-init';
 
 /*
   Generated class for the Start page.
@@ -10,15 +10,18 @@ import { TabsPage } from '../tabs/tabs';
 */
 @Component({
   selector: 'page-start',
-  templateUrl: 'start.html'
+  templateUrl: 'start.html',
+  
 })
 export class StartPage {
+ 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  goToMain(){
-    this.navCtrl.setRoot(TabsPage);  
+  goToPlaceInit(){
+    this.navCtrl.setRoot(PlaceInitPage);
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StartPage');

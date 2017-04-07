@@ -1,0 +1,10 @@
+<ion-content padding>
+      <form [formGroup]="initForm">
+  <ion-item>
+    <ion-label color="primary" floating>Type here</ion-label>
+    <ion-input  [formControl]="initForm.controls['myControl']" type="text" [(ngModel)]="initValue"></ion-input>
+  </ion-item>
+    <br>
+    <button ion-button color="danger" (click) = "goToMain()" type="submit" [disabled]="!initForm.controls['myControl'].valid" >Submit</button>
+    </form>
+</ion-content>

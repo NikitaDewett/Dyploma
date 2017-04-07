@@ -5,6 +5,7 @@ import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { StartPage } from '../pages/start/start';
+import { PlaceInitPage } from '../pages/place-init/place-init';
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,7 +19,8 @@ import { HashPipe } from '../services/hashPipe';
     TabsPage,
     FavoritesPage,
     StartPage,
-    HashPipe
+    HashPipe,
+    PlaceInitPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -30,7 +32,8 @@ import { HashPipe } from '../services/hashPipe';
     HomePage,
     TabsPage,
     FavoritesPage,
-    StartPage
+    StartPage,
+    PlaceInitPage
   ],
   providers: [
     StatusBar,

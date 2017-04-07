@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { UserService } from '../../services/userService';
+import { NativeStorage } from '@ionic-native/native-storage';
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers: [NativeStorage]
 })
 export class HomePage {
 
@@ -13,7 +15,7 @@ export class HomePage {
   public scroll;
   public first_paggination;
 
-  constructor(public navCtrl: NavController, public UserService: UserService) {
+  constructor(public navCtrl: NavController, public UserService: UserService, private nativeStorage: NativeStorage) {
     this.token = '503991026.e029fea.2ce941ad07d446ffb17acd7960372aba'
   }
 
@@ -59,6 +61,13 @@ export class HomePage {
       }
     })
   }
+
+  getLocalValue(){
+     this.nativeStorage.getItem('initValue').then(data=>console.log(data));
+  }
+
+
+
 
 }
 
