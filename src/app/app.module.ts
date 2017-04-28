@@ -11,6 +11,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { UserService } from '../services/userService';
 import { HashPipe } from '../services/hashPipe';
+import {
+ GoogleMaps,
+ GoogleMap,
+} from '@ionic-native/google-maps';
 @NgModule({
   declarations: [
     MyApp,
@@ -40,6 +44,7 @@ import { HashPipe } from '../services/hashPipe';
     UserService,
     SplashScreen,
     HashPipe,
+     GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

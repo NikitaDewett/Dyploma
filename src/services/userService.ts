@@ -5,8 +5,9 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService {
-
+ 
   constructor(public http: Http) {
+  
   }    
 
 
@@ -21,6 +22,12 @@ export class UserService {
     return this.http.get(next_url)
     .map((res:Response)=> {return res.json()}).toPromise();
 
+  }
+
+  getLocationId(location){
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+location+'&key=AIzaSyCy64LPIq1REH00fgljnwRVyy0loDQr47g')
+    .map((res:Response)=> {return res.json()}).toPromise();
+    
   }  
 
 }
