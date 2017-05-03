@@ -26,7 +26,7 @@ export class PlaceInitPage {
   }
   goToMain(){
     this.navCtrl.setRoot(TabsPage);
-    this.nativeStorage.setItem('initValue',this.initValue)
+    this.nativeStorage.setItem('location',this.initValue)
   .then(
     () => console.log('Stored item!'),
     error => console.error('Error storing item', error)
@@ -35,6 +35,7 @@ export class PlaceInitPage {
 
 
   ionViewDidLoad() {
+
     console.log('ionViewDidLoad PlaceInitPage');
   }
 

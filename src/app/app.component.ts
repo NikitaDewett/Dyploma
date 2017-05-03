@@ -10,6 +10,7 @@ import { StartPage } from '../pages/start/start';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  
   rootPage = StartPage; 
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {

@@ -3,35 +3,18 @@
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
-  <ion-content padding>
-      <ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-content padding class="card-background-page">
+      <!--<ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-down"
       refreshingSpinner="dots"></ion-refresher-content>
-  </ion-refresher>
+  </ion-refresher>-->
    <ion-card *ngFor="let content of apiResponse">   
-    <img src={{content.images.standard_resolution.url}}/>
-    <ion-card-content>
-      <ion-card-title>
-        {{content.location&&content.location.name}}
-      </ion-card-title>
-      <p>
-        {{content.caption.text|hashTag}}
-      </p>
-    </ion-card-content>
-
-    <ion-row no-padding>
-      <ion-col>
-        <button ion-button clear small color="danger" icon-left (click) ="getLocalValue()">
-          <ion-icon name='star'></ion-icon>
-          Favorite
-        </button>
-        
-      </ion-col>
-    </ion-row>
+    <img [src]={{content.images.standard_resolution.url}}/>
+    <div class="card-title">{{content.caption.text|hashTag}}</div>
   </ion-card>
-   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-   <ion-infinite-scroll-content
-   refreshingSpinner="dots"></ion-infinite-scroll-content>
- </ion-infinite-scroll>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content>
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
