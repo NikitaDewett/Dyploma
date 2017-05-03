@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { UserService } from '../../services/userService';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { ToastController } from 'ionic-angular';
+import { Settings } from '../settings/settings';
 import {
  GoogleMaps,
  GoogleMap,
@@ -35,11 +36,50 @@ export class HomePage {
   }
   
   ionViewDidLoad(){
+  //   var a = localStorage.getItem("location")
 
-     this.nativeStorage.getItem("location")
-    .then((data)=>{
-     var geocoderReq:GeocoderRequest = {address:data}
-     console.log("location from storage>>", data)
+  //   //  this.nativeStorage.getItem("location")
+  //   // .then((data)=>{
+  //    var geocoderReq:GeocoderRequest = {address:a}
+  //   //  console.log("location from storage>>", data)
+  //    this.geocoder.geocode(geocoderReq)
+  //   .then((data)=>{
+  //     console.log("location from geocode >>", data)
+  //     let latLng = {lat:'', long:''};
+  //     latLng.lat = data[0].position.lat;
+  //     latLng.long = data[0].position.lng;
+  //     console.log("LatLng>>>", latLng)
+  //     return latLng
+  //   })
+  //   .then(latLng =>{
+  //     this.UserService.getLocationId(latLng.lat, latLng.long, this.token)
+  //   .then((response)=>{
+  //       let locationId
+  //       locationId = response.data[0].id
+  //       console.log('LocationId>>>', locationId)
+  //       return locationId
+  //     })
+  //   .then(locationId =>{
+  //     this.locationId = locationId      
+  //     this.UserService.loadFeed(locationId, this.token).then((data) => {
+  //       this.apiResponse = data.data;
+  //       this.next_url = data.pagination.next_url;
+  //       this.first_paggination = this.next_url
+  //       console.log('FEED IS>>>>', data)
+  //    })
+  //   })
+  // })
+//  });
+}
+
+  ionViewWillEnter(){
+    
+    var a = localStorage.getItem("location")
+
+    //  this.nativeStorage.getItem("location")
+    // .then((data)=>{
+     var geocoderReq:GeocoderRequest = {address:a}
+    //  console.log("location from storage>>", data)
      this.geocoder.geocode(geocoderReq)
     .then((data)=>{
       console.log("location from geocode >>", data)
@@ -67,8 +107,7 @@ export class HomePage {
      })
     })
   })
- });
-}
+  }
 
   // doRefresh(refresher) {
   //   if (this.scroll== undefined){
@@ -106,8 +145,11 @@ myFunction(index){
     long: this.apiResponse[index].location.longitude,
   title:'hello'}
     this.favorites.push(obj)
-    this.nativeStorage.setItem('favorites', this.favorites)
+   localStorage.setItem('favorites', JSON.stringify(this.favorites))
     console.log(this.favorites);
+  }
+  settingsPage(){
+    this.navCtrl.push(Settings);
   }
 
   doInfinite(infiniteScroll) {

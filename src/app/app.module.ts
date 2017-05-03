@@ -7,6 +7,7 @@ import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { StartPage } from '../pages/start/start';
+import { Settings } from '../pages/settings/settings';
 import { PlaceInitPage } from '../pages/place-init/place-init';
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -24,6 +25,7 @@ import {
     AboutPage, 
     HomePage,
     TabsPage,
+    Settings,
     FavoritesPage,
     StartPage,
     HashPipe,
@@ -35,6 +37,7 @@ import {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    Settings,
     AboutPage,
     HomePage,
     TabsPage,

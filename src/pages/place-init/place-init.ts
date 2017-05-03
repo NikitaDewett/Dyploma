@@ -26,6 +26,7 @@ export class PlaceInitPage {
   }
   goToMain(){
     this.navCtrl.setRoot(TabsPage);
+    localStorage.setItem('location', this.initValue)
     this.nativeStorage.setItem('location',this.initValue)
   .then(
     () => console.log('Stored item!'),
