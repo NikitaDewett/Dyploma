@@ -9,8 +9,8 @@
       pullingIcon="arrow-down"
       refreshingSpinner="dots"></ion-refresher-content>
   </ion-refresher>-->
-   <ion-card *ngFor="let content of apiResponse">   
-    <img [src]={{content.images.standard_resolution.url}}/>
+   <ion-card *ngFor="let content of apiResponse let i = index"  (dblclick)="myFunction(i)">   
+    <img [src]='content.images.standard_resolution.url'/>
     <div class="card-title">{{content.caption.text|hashTag}}</div>
   </ion-card>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">

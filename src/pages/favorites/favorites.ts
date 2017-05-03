@@ -1,22 +1,26 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { NativeStorage } from '@ionic-native/native-storage';
 
-/*
-  Generated class for the Favorites page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-favorites',
-  templateUrl: 'favorites.html'
+  templateUrl: 'favorites.html',
+  providers: [NativeStorage]
 })
 export class FavoritesPage {
+  public images:Array<any>; 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private nativeStorage: NativeStorage) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FavoritesPage');
+             this.nativeStorage.getItem('favorites').then((data)=>{
+      this.images = data
+      console.log("constructor>>>",this.images)
+    })
   }
 
+  ionViewWillEnter(){
+        this.nativeStorage.getItem('favorites').then((data)=>{
+      this.images = data
+      console.log('WILL ENTER>>>',this.images)
+    })
+  }
 }

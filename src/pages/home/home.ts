@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { UserService } from '../../services/userService';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { ToastController } from 'ionic-angular';
 import {
  GoogleMaps,
  GoogleMap,
@@ -25,10 +26,12 @@ export class HomePage {
   public next_url;
   public scroll;
   public first_paggination;
-  public locationTitle;  
+  public locationTitle;
+  public favorites:Array<any>; 
 
-  constructor(public navCtrl: NavController, public UserService: UserService, private nativeStorage: NativeStorage, private geocoder:Geocoder) {
-    this.token = '503991026.e029fea.2ce941ad07d446ffb17acd7960372aba'
+  constructor(public navCtrl: NavController, public UserService: UserService, private nativeStorage: NativeStorage, private geocoder:Geocoder, public toastCtrl: ToastController) {
+    this.token = '503991026.e029fea.2ce941ad07d446ffb17acd7960372aba';
+    this.favorites = [];
   }
   
   ionViewDidLoad(){
@@ -36,8 +39,10 @@ export class HomePage {
      this.nativeStorage.getItem("location")
     .then((data)=>{
      var geocoderReq:GeocoderRequest = {address:data}
+     console.log("location from storage>>", data)
      this.geocoder.geocode(geocoderReq)
     .then((data)=>{
+      console.log("location from geocode >>", data)
       let latLng = {lat:'', long:''};
       latLng.lat = data[0].position.lat;
       latLng.long = data[0].position.lng;
@@ -55,10 +60,10 @@ export class HomePage {
     .then(locationId =>{
       this.locationId = locationId      
       this.UserService.loadFeed(locationId, this.token).then((data) => {
-      this.apiResponse = data.data;
-      this.next_url = data.pagination.next_url;
-      this.first_paggination = this.next_url
-      console.log('FEED IS>>>>', data)
+        this.apiResponse = data.data;
+        this.next_url = data.pagination.next_url;
+        this.first_paggination = this.next_url
+        console.log('FEED IS>>>>', data)
      })
     })
   })
@@ -89,8 +94,24 @@ export class HomePage {
   // }
 
   // }
+myFunction(index){
+      let toast = this.toastCtrl.create({
+      message: 'Photo was saved successfully',
+      duration: 2000,
+      position:'middle'
+    });
+    toast.present();
+    let obj = {image: this.apiResponse[index].images.standard_resolution.url,
+    lat: this.apiResponse[index].location.latitude,
+    long: this.apiResponse[index].location.longitude,
+  title:'hello'}
+    this.favorites.push(obj)
+    this.nativeStorage.setItem('favorites', this.favorites)
+    console.log(this.favorites);
+  }
 
   doInfinite(infiniteScroll) {
+  
     this.UserService.loadMorePhotos(this.next_url).then((data) => {
         this.next_url = data.pagination.next_url
         console.log('data from MORE photos(infiniteScroll):>>>',data)

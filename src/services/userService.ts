@@ -13,7 +13,7 @@ export class UserService {
  loadFeed(location, token) {
     //GET PHOTOS
     // return this.http.get('https://api.instagram.com/v1/users/self/media/recent?access_token=' + token + '&count=5')
-      return this.http.get('https://api.instagram.com/v1/locations/'+ location +'/media/recent?access_token='+token+'&count=5')
+      return this.http.get('https://api.instagram.com/v1/locations/'+ location +'/media/recent?access_token='+token)
     .map((res:Response) => {return res.json()}).toPromise();
   }
 

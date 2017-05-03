@@ -25,7 +25,7 @@ $font-path: "../assets/fonts";
 
 $colors: (
   primary:    #387ef5,
-  secondary:  #80CBC4,
+  secondary:  #691A99,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
@@ -36,15 +36,13 @@ $colors: (
   mint: #68EFAD
 );
 
-$toolbar-md-height: 10px;
-
 
 ion-header {
-  
-  .toolbar-background {
+   .toolbar-background {
 
-  background-color: #80CBC4
+  background-color: #691A99
 }
+  
   .button-md {
     box-shadow: none;
   }
