@@ -1,6 +1,7 @@
 page-home {
 .card-background-page {
-
+  background-color: #ebedf0;
+  
   ion-card {
     position: relative;
     text-align: center;
@@ -11,8 +12,8 @@ page-home {
     top: 36%;
     font-size: 2.0em;
     width: 100%;
-    font-weight: bold;
     color: #fff;
+    font-family: 'Grimtotem';
   }
 
   .card-subtitle {
@@ -25,5 +26,6 @@ page-home {
 
 }
 }
+
 
 

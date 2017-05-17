@@ -1,3 +1,27 @@
 page-place-init {
 
 }
+
+.backInit{
+    background-image: url('./../assets/back1.jpg');
+    background-repeat: repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.transparent{
+    background-color: transparent;
+    color: white;
+}
+.inputTitle{
+    color: white;
+    margin-left: 5%;
+    font-family: 'Grimtotem';
+    font-size: 1.8em;
+}
+
+.submitButton{
+    font-family: 'Grimtotem';
+    font-size: 2em;   
+}
+  

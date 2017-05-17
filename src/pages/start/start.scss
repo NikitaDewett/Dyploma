@@ -1,14 +1,47 @@
-page-start {
+page-start {}
 
+.title{
+bottom: 0;
+color: white;
+font-size: 1.7em;
+text-align: center;
+font-family: 'Grimtotem';
+}
+@-webkit-keyframes pulsate {
+ 50% { color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff; }
+}
+@keyframes pulsate {
+ 50% { color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff; }
+}
+#blink7 {
+  color: rgb(245,245,245);
+  text-shadow: 0 -1px rgba(0,0,0,.1);
+  -webkit-animation: pulsate 1.2s linear infinite;
+  animation: pulsate 1.2s linear infinite;
 }
 
-.logoDiv{
-    margin-top: -65%;
+.img-wrapper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
-// .firstSlide{
-//     background-image: url('../../assets/back2.jpg');
-//     background-repeat: no-repeat;
-//     background-position: center center;
-//     background-attachment: fixed;
-//     background-size: cover;
-// }
+.img-wrapper img {
+    position: absolute;
+    top: -9999px;
+    right: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.background{
+    background-image: url('../assets/back2.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}

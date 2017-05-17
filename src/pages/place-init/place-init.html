@@ -1,10 +1,10 @@
-<ion-content padding>
+<ion-content padding class="backInit">
       <form [formGroup]="initForm">
-  <ion-item>
-    <ion-label color="primary" floating>Type here</ion-label>
+   <p class="inputTitle">Type the name of sight here</p>
+  <ion-item class="transparent"> 
     <ion-input  [formControl]="initForm.controls['myControl']" type="text" [(ngModel)]="initValue"></ion-input>
   </ion-item>
     <br>
-    <button ion-button color="danger" (click) = "goToMain()" type="submit" [disabled]="!initForm.controls['myControl'].valid" >Submit</button>
+    <button ion-button color="light" (click) = "goToMain()" type="submit" [disabled]="!initForm.controls['myControl'].valid" class="submitButton" clear full>Submit</button>
     </form>
 </ion-content>

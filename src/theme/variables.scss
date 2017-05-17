@@ -24,9 +24,9 @@ $font-path: "../assets/fonts";
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #387ef5,
+  primary:    #2650a4,
   secondary:  #691A99,
-  danger:     #f53d3d,
+  danger:     #ee1843,
   light:      #f4f4f4,
   dark:       #222,
   transparent: transparent,
@@ -35,12 +35,23 @@ $colors: (
   purple_light: #7A1EA1,
   mint: #68EFAD
 );
+@font-face {
+    font-family: 'Grimtotem';
+    src: url('../assets/Grimtotem.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Quentin';
+    src: url('../assets/Quentin.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 ion-header {
    .toolbar-background {
-
-  background-color: #691A99
+    background-color: #2650a4;
 }
   
   .button-md {
@@ -57,6 +68,8 @@ ion-header {
     align-items: center;
     -webkit-justify-content: center;
     justify-content: center;
+    font-family: 'Grimtotem';
+    font-size: 1em
   }
 }
 
