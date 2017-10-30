@@ -20,7 +20,6 @@ import {
 } from '@ionic-native/google-maps';
 @NgModule({
   declarations: [
-    
     MyApp,
     AboutPage, 
     HomePage,
